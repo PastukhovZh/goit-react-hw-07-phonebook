@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addContact } from "redux/actions";
 import { Form, Label, Input, Button } from "./ContactForm.styled";
 
 
-export const ContactForm = ({onSubmit}) => {
+export const ContactForm = () => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
 
 
+    
     const handleChange = (e) => {
         switch (e.target.name) {
             case 'name':
@@ -22,10 +25,13 @@ export const ContactForm = ({onSubmit}) => {
         }
     }
 
-
+    const dispatch = useDispatch();
+    
     const handleSubmit = e => {
-    e.preventDefault()
-        onSubmit({ name, number })
+        e.preventDefault()
+        const form = e.target;
+        // onSubmit({ name, number })
+        dispatch(addContact(form.elements.name.value))
         reset()
     }
     
@@ -47,7 +53,7 @@ export const ContactForm = ({onSubmit}) => {
                         required
                     />
                 </Label>
-                <Label> Number
+                {/* <Label> Number
                     <Input
                         onChange={handleChange}
                 value={number}
@@ -57,7 +63,7 @@ export const ContactForm = ({onSubmit}) => {
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
                     />
-                </Label>
+                </Label> */}
                 <Button type="submit">Add friend</Button>
                 
         </Form>)

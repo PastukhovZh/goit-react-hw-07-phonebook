@@ -64,22 +64,38 @@ return
   }
 
 
+//   return (
+//     <Wrap>
+//       <div>
+//         <h1>Phonebook</h1>
+//       <ContactForm onSubmit={addFriend} />
+      
+//         </div>
+//       <div>
+//         <h2>Contacts</h2>
+//         <Filter
+//           value={filter}
+//           onChange={changeFilter} />
+//         <ContactList
+//           contacts={getVisibleFriends()}
+//           onDelete={deleteFriend}
+//         />
+//       </div>
+//       </Wrap>)
+// }
+
+
   return (
     <Wrap>
       <div>
         <h1>Phonebook</h1>
-      <ContactForm onSubmit={addFriend} />
+      <ContactForm />
       
         </div>
       <div>
         <h2>Contacts</h2>
-        <Filter
-          value={filter}
-          onChange={changeFilter} />
-        <ContactList
-          contacts={getVisibleFriends()}
-          onDelete={deleteFriend}
-        />
+        <Filter/>
+        <ContactList />
       </div>
       </Wrap>)
 }
