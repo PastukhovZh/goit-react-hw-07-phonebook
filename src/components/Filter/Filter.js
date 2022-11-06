@@ -1,7 +1,7 @@
 import { Input,Label } from "./Filter.styled"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux"
-import { findContact } from "redux/actions"
+import { findContact } from "redux/filtersSlise"
 
 
 
@@ -15,12 +15,9 @@ export const Filter = () => {
 
 const dispatch = useDispatch()
     const handleChange = e => {
-        const gru = e.target.value
-        return dispatch(findContact(gru))
-     
+        return dispatch(findContact( e.target.value))
 }
     
-
     return(<Label>
         Find contacts by name
         <Input type='name' onChange={handleChange}></Input>

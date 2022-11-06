@@ -1,35 +1,49 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
+// import { addContact, deleteContact } from "./actions";
 
-const contactsInitialState = [
-    { id: 0, name: "Learn HTML and CSS" },
-        { id: 1, name: "Get good at JavaScript", number:123123},
-        { id: 2, name: "Master React", number:123124},
-        { id: 3, name: "Discover Redux", number:123125},
-        { id: 4, name: "Build amazing apps", number:123126 },
-]
+const contactsInitialState = {
+  contacts: [
+    { id: 0, name: "Learn", number: 12345},
+    { id: 1, name: "Get", number: 12345},
+    { id: 2, name: "Master", number: 12345 },
+    { id: 3, name: "Discover", number: 12345 },
+    { id: 4, name: "Build", number: 12345 },
+  ],
 
-export const contactsSlice = createSlice({
-    name: 'contact',
+};
+
+
+const contactsSlice = createSlice({
+    name: 'contacts',
     initialState: contactsInitialState,
     reducers: {
-        addFriend: {
-            reducer(state, action){
-                state.push(action.payload)
+        addContact: {
+            reducer(state, action) {
+                return {
+                    ...state,
+                    contacts: [...state.contacts, action.payload]
+                }
             },
             prepare(name, number) {
                 return {
-                    payload: {
-                        id:nanoid(),
-                        name,
-                        number,
-                    }
+                    payload:{
+                    id: nanoid(),
+                    name,
+                    number}
                 }
             }
         },
-        deleteFriend(state, action) {
-            const index = state.findIndex(contact => contact.id === action.payload)
-            state.splice(index,1)
+        deleteContact(state, action) {
+            return {
+      ...state,
+                contacts:state.contacts.filter(contacts=>contacts.id !== action.payload)
+    }
         }
     }
-    
 })
+
+
+
+export const { addContact, deleteContact } = contactsSlice.actions
+export const contactsReducers = contactsSlice.reducer
