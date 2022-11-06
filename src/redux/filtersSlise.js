@@ -1,5 +1,4 @@
 import {createSlice } from "@reduxjs/toolkit";
-// import { findContact } from "./actions";
 
 
 const filterInitialState = {

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
-// import { addContact, deleteContact } from "./actions";
+
 
 const contactsInitialState = {
   contacts: [

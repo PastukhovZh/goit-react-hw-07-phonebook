@@ -3,10 +3,8 @@ import PropTypes from "prop-types"
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts, getStatusFilter } from "redux/selectors";
 import { deleteContact } from "redux/contactsSlice";
-// import { deleteContact } from "redux/actions";
 
 const getVisibleContact = (contacts, statusFilters) => {
-    // console.log(statusFilters.filters)
           return contacts.contacts.filter(contact => contact.name.toLowerCase().includes(statusFilters.filters.value));
       }
 
