@@ -28,10 +28,14 @@ export const ContactForm = () => {
     const dispatch = useDispatch();
     
     const handleSubmit = e => {
+
+        
         e.preventDefault()
-        const form = e.target;
-        // onSubmit({ name, number })
-        dispatch(addContact(form.elements.name.value))
+        const name = e.target.elements.name.value;
+        const number = e.target.elements.number.value;
+
+        dispatch(addContact(name, number))
+        
         reset()
     }
     
@@ -53,17 +57,17 @@ export const ContactForm = () => {
                         required
                     />
                 </Label>
-                {/* <Label> Number
+                <Label> Number
                     <Input
                         onChange={handleChange}
-                value={number}
+                        value={number}
                         type="tel"
                         name="number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
                     />
-                </Label> */}
+                </Label>
                 <Button type="submit">Add friend</Button>
                 
         </Form>)

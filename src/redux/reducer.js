@@ -1,15 +1,13 @@
-const { default: statusFilters } = require("./constants");
-
 
 const initialState = {
   contacts: [
-    { id: 0, name: "Learn HTML and CSS",},
-    { id: 1, name: "Get good at JavaScript",},
-    { id: 2, name: "Master React", },
-    { id: 3, name: "Discover Redux", },
-    { id: 4, name: "Build amazing apps", },
+    { id: 0, name: "Learn", number: 12345},
+    { id: 1, name: "Get", number: 12345},
+    { id: 2, name: "Master", number: 12345 },
+    { id: 3, name: "Discover", number: 12345 },
+    { id: 4, name: "Build", number: 12345 },
   ],
-  filters: {status: 'all'},
+    filters: {value: ''},
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -24,7 +22,14 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 contacts:state.contacts.filter(contacts=>contacts.id !== action.payload)
             }
-        
+        case "filters/setStatusFilter":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          value: action.payload,
+        },
+      };
         default:
     return state
     }
@@ -32,3 +37,20 @@ export const rootReducer = (state = initialState, action) => {
 
 
 }
+
+
+// const filterInitialState = {
+//       filters: '',
+// }
+// export const filterReducer = (state = filterInitialState, action) => {
+//     switch (action.type) {
+        
+//         case 'filter/findContact':
+//             return {
+//                 ...state,
+//                 contacts: state.contacts.filter(contact =>contact)
+//             }
+//         default:
+//             return state
+//     }
+// }
