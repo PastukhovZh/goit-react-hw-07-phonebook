@@ -6,6 +6,10 @@ import { deleteContact } from "redux/operations";
 
 const getVisibleContact = (contacts, statusFilters) => {
     
+    
+    if (statusFilters === undefined) {
+        statusFilters =''
+    } 
     return contacts.items.filter(contact => contact.name.toLowerCase().includes(statusFilters.value));
     
       } 
