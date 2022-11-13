@@ -15,7 +15,7 @@ export const Filter = () => {
 
 const dispatch = useDispatch()
     const handleChange = e => {
-        return dispatch(findContact( e.target.value))
+        return dispatch(findContact( e.target.value.toLowerCase()))
 }
     
     return(<Label>
